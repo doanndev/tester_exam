@@ -63,6 +63,15 @@ function initializeQuiz(data) {
             // Xóa highlight cũ
             questionDiv.classList.remove("highlight-wrong", "highlight-unanswered", "highlight-correct");
 
+            const options = questionDiv.querySelectorAll(`input[name="question${index}"]`);
+
+            options.forEach(option => {
+                if (option.value === correctAnswer) {
+                    const label = option.closest("label");
+                    label.classList.add("highlight-correct");
+                }
+            });
+
             if (selectedOption) {
                 if (selectedOption.value === correctAnswer) {
                     correctCount++;
